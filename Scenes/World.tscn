@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/WallNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/bluebird-midflap.png" type="Texture" id=2]
 [ext_resource path="res://Scprits/Player.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/background-day.png" type="Texture" id=4]
 [ext_resource path="res://Audio/point.wav" type="AudioStream" id=5]
-[ext_resource path="res://Audio/die.wav" type="AudioStream" id=6]
 [ext_resource path="res://Audio/wing.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sprites/base.png" type="Texture" id=8]
 
@@ -47,9 +46,6 @@ margin_left = -248.0
 margin_top = -112.0
 margin_right = -232.0
 margin_bottom = -72.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PlayerNode" type="Node2D" parent="."]
 
@@ -59,13 +55,6 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="pointSound" type="AudioStreamPlayer" parent="PlayerNode/Player"]
-stream = ExtResource( 5 )
-
-[node name="dieSound" type="AudioStreamPlayer" parent="PlayerNode/Player"]
-stream = ExtResource( 6 )
-pitch_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/Player"]
 shape = SubResource( 1 )
@@ -87,6 +76,9 @@ shape = SubResource( 3 )
 
 [node name="wingSound" type="AudioStreamPlayer" parent="PlayerNode/Player"]
 stream = ExtResource( 7 )
+
+[node name="pointSound" type="AudioStreamPlayer" parent="PlayerNode/Player"]
+stream = ExtResource( 5 )
 
 [node name="WallNode" parent="." instance=ExtResource( 1 )]
 position = Vector2( 400, -8 )
@@ -130,4 +122,4 @@ shape = SubResource( 4 )
 [connection signal="area_entered" from="PlayerNode/Player/Detect" to="PlayerNode/Player" method="_on_Detect_area_entered"]
 [connection signal="body_entered" from="PlayerNode/Player/Detect" to="PlayerNode/Player" method="_on_Detect_body_entered"]
 [connection signal="body_entered" from="PlayerNode/Player/Resetter" to="PlayerNode/Player" method="_on_Resetter_body_entered"]
-[connection signal="area_entered" from="BaseArea" to="PlayerNode/Player" method="_on_BaseArea_area_entered"]
+[connection signal="body_entered" from="BaseArea" to="PlayerNode/Player" method="_on_BaseArea_body_entered"]
