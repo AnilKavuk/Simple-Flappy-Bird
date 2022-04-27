@@ -22,6 +22,7 @@ __meta__ = {
 
 [node name="UpperWallSprite" type="Sprite" parent="Walls"]
 position = Vector2( 0, -200 )
+rotation = -3.14159
 texture = ExtResource( 1 )
 
 [node name="UpperWallCoil" type="CollisionShape2D" parent="Walls"]

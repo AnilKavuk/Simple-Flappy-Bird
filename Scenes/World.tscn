@@ -113,10 +113,12 @@ __meta__ = {
 [node name="Base" type="Sprite" parent="BaseArea"]
 position = Vector2( -0.50002, 34 )
 scale = Vector2( 0.717262, 0.392857 )
+z_index = -1
 texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BaseArea"]
 position = Vector2( -0.5, 34.5 )
+z_index = -1
 shape = SubResource( 4 )
 
 [connection signal="area_entered" from="PlayerNode/Player/Detect" to="PlayerNode/Player" method="_on_Detect_area_entered"]
